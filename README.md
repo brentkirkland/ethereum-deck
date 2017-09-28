@@ -6,10 +6,11 @@ The project is in part with [blockcolor smart contract](https://github.com/brent
 
 ## To Run:
 * Please have IPFS running locally.
-* Deploy the [blockcolor smart contract](https://github.com/brentkirkland/blockcolor) contracts to testnet.
+* Deploy the [blockcolor smart contract](https://github.com/brentkirkland/blockcolor) contracts to testrpc.
 * `yarn install && yarn start`
 
 ## TODO:
+* Deploy blockcolor to public testnet.
 * Remove unused variables.
 * Rename components to match new contract.
 * Get an accessible IPFS node running so others can demo this.
