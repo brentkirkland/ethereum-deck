@@ -2,11 +2,11 @@
 
 This project aims to build a decentralized ticketing platform for service industry businesses.
 
-The project is in part with (blockcolor smart contract)[https://github.com/brentkirkland/blockcolor].
+The project is in part with [blockcolor smart contract](https://github.com/brentkirkland/blockcolor).
 
 ## To Run:
 * Please have IPFS running locally.
-* Deploy the (blockcolor smart contract)[https://github.com/brentkirkland/blockcolor] contracts to testnet.
+* Deploy the [blockcolor smart contract](https://github.com/brentkirkland/blockcolor) contracts to testnet.
 * `yarn install && yarn start`
 
 ## TODO:
