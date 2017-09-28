@@ -3,39 +3,80 @@ import '../App.css';
 import PropTypes from 'prop-types'
 import Message from './Message'
 import AddMessage from './AddMessage'
+import bs58 from 'bs58'
+
+//ipfs should be added to redux
+import ipfsAPI from 'ipfs-api'
+var ipfs = ipfsAPI('localhost', '5001', {protocol: 'http'})
 
 class Topic extends Component {
 
-  renderMessage(a, i) {
-    return <Message message={a.message} account={a.account}/>
+  constructor(props) {
+    super(props);
+    this.state = {
+      topic: '',
+      res: '',
+      done: false
+    };
   }
 
-  renderMessages() {
-    return this.props.messages.map(this.renderMessage.bind(this))
+  componentDidMount () {
+    this.convertIPFSHash()
   }
 
+  getHash (str) {
+    const remove0x = str.slice(2, str.length);
+    const bytes = Buffer.from(`1220${remove0x}`, "hex");
+    const hash = bs58.encode(bytes);
+    return hash;
+  }
+
+  convertIPFSHash () {
+    // console.log(this.getHash(this.props.ipfs))
+    if (!this.state.done) {
+      ipfs.files.cat(this.getHash(this.props.ipfs), this.handleStream.bind(this))
+    }
+  }
+
+  handleStream (err, stream) {
+    var res = ''
+
+    stream.on('data', this.chunk.bind(this))
+
+    stream.on('error', function (err) {
+      console.error('Oh nooo', err)
+    })
+
+    stream.on('end', this.end.bind(this))
+  }
+
+  chunk (chunk) {
+    if (!this.state.done) {
+      this.setState({
+        res: this.state.res + chunk.toString()
+      })
+    }
+  }
+
+  end () {
+    this.setState({
+      done: true
+    })
+  }
 
   render() {
     return (
       <div className="Yellow">
         <div className="Pink-Header">
-          <h3>{this.props.header}</h3>
-          <p>{this.props.header}</p>
-          <p>{this.props.account}</p>
+          <p>{this.state.res}</p>
         </div>
-        <Message message="Great stuff" account="0x0asdasd"/>
-        {this.renderMessages()}
-        <AddMessage/>
       </div>
     );
   }
 }
 
 Topic.propTypes = {
-  header: PropTypes.string.isRequired,
-  about: PropTypes.string.isRequired,
-  account: PropTypes.string.isRequired,
-  messages: PropTypes.object.isRequired
+  ipfs: PropTypes.string.isRequired
 }
 
 export default Topic;

@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <h1>Boj.io</h1>
+        <h1>blockcolor</h1>
       </div>
     );
   }

@@ -7,13 +7,13 @@ class CreateComapny extends Component {
     return (
       <div className="App-send-entry-bar">
         <div className="SendEntry-width">
-          <h1 className="SendEntry-title">Create Company</h1>
+          <h1 className="SendEntry-title">Create Issue</h1>
           <div className="SendEntry-forum">
-            <input placeholder="Unique ID"/>
-            <input placeholder="Company Name"/>
-            <input placeholder="About"/>
+            <input placeholder="Subject"/>
+            <input placeholder="Info"/>
             <div className="SendEntry-button">Create</div>
           </div>
+          <p>Try it out. You need metamask!</p>
           <p>WARNING: This is alpha software. We are not responsible for lost funds. By using the application you acknowledge that you are aware of the applications development phase. Proceed with caution.
           </p>
         </div>

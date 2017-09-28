@@ -8,9 +8,9 @@ import {Provider} from 'react-redux'
 import reducer from './reducers'
 const store = createStore(reducer)
 
-// render(
-//   <Provider store={store}>
-//   <App/></Provider>, document.getElementById('root'));
+render(
+  <Provider store={store}>
+  <App/></Provider>, document.getElementById('root'));
 
-render (<App/>, document.getElementById('root'))
+// render (<App/>, document.getElementById('root'))
 registerServiceWorker();

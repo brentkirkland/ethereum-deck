@@ -7,12 +7,11 @@ class Company extends Component {
     return (
       <div className="Blue">
         <div className="Blue-in">
-          <span>
-            <i>{this.props.id}</i>
-          </span>
           <h2>{this.props.header}</h2>
           <p>{this.props.about}</p>
-          <p>{this.props.account}</p>
+          <p>Currently you may create an issue, which will then use IPFS for KV fetching.</p>
+          <p>More to come.</p>
+          {/* <p>{this.props.account}</p> */}
         </div>
       </div>
     );

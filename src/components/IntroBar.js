@@ -7,7 +7,7 @@ class IntroBar extends Component {
     return (
       <div className="App-intro-bar">
         <div className="IntroBar-width">
-          <h1 className="IntroBar-title">Issues, Tickets, Communities</h1>
+          <h1 className="IntroBar-title">Let's simplify support tickets.</h1>
           <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Mauris massa. Vestibulum lacinia arcu eget nulla.
           </h3>
           <div className="IntroBar-benefits-div">
@@ -18,7 +18,7 @@ class IntroBar extends Component {
             </div>
             <div className="IntroBar-benefits">
               <div className="circle"/>
-              <span className="IntroBar-benefits-span">Free</span>
+              <span className="IntroBar-benefits-span">Awesome</span>
               <p>Sed cursus ante dapibus diam. Sed nisi.</p>
             </div>
             <div className="IntroBar-benefits">

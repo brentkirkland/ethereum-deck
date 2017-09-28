@@ -6,9 +6,11 @@ import Textarea from 'react-textarea-autosize';
 import Header from './components/Header'
 import Company from './components/Company'
 import Topic from './components/Topic'
-import CompanyPage from './components/CompanyPage'
+import VisiblePage from './containers/VisiblePage'
 import AddTopic from './components/AddTopic'
 import HomePage from './components/HomePage'
+import WrongNetwork from './components/WrongNetwork'
+import Loading from './components/Loading'
 
 
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom'
@@ -123,31 +125,6 @@ class App extends Component {
     )
   }
 
-  renderMessageButton() {}
-
-  renderTopicButton() {
-
-    // return (
-    //   <div  className="Topic-button-active">
-    //     <b>Submit</b>
-    //   </div>
-    // )
-    //
-    // if (this.state.addTopicText === '') {
-    //   return (
-    //     <div className="Topic-button-gray">
-    //       Submit
-    //     </div>
-    //   )
-    // } else {
-    //   return (
-    //     <div  className="Topic-button-active">
-    //       Submit
-    //     </div>
-    //   )
-    // }
-  }
-
   handleTopicText(e) {
     console.log(e.target.value)
   }
@@ -166,17 +143,32 @@ class App extends Component {
     )
   }
 
+  renderWithWeb3 () {
+    if (window.web3 === undefined) {
+      return <WrongNetwork/>
+    } else if (window.web3.version.network == 'loading') {
+      return (
+        <Loading/>
+      );
+    } else {
+      return (
+        <VisiblePage/>
+      );
+    }
+  }
+
   render() {
     // console.log(window.web3.eth)
 
-    return (
-      <Router>
-        <Switch>
-          <Route exact path="/" component={HomePage}/>
-          <Route path="/*" component={CompanyPage}/>
-        </Switch>
-      </Router>
-    )
+    // return (
+    //   <Router>
+    //     <Switch>
+    //       <Route exact path="/" component={CompanyPage}/>
+    //       <Route path="/*" component={CompanyPage}/>
+    //     </Switch>
+    //   </Router>
+    // )
+    return this.renderWithWeb3()
   }
 }
 
